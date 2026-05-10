@@ -1,0 +1,85 @@
+<div class="card">
+  <app-sidebar [(visible)]="visible" />
+  <p-menubar>
+    <ng-template #start>
+      <p-button icon="pi pi-bars" [text]="true" [rounded]="true" severity="secondary" (click)="toggleDrawer()" />
+    </ng-template>
+    <ng-template #end>
+      <div class="flex items-center gap-2">
+        <p-button
+          [icon]="isDarkTheme() ? 'pi pi-moon' : 'pi pi-sun'"
+          [text]="true"
+          [rounded]="true"
+          severity="secondary"
+          (click)="toggleDarkMode()"
+        />
+        <p-popover #themeMenu>
+          <div class="flex flex-col gap-4 w-64 p-2">
+            <div>
+              <span class="text-sm font-semibold mb-2 block">Primary</span>
+              <div class="flex flex-wrap gap-2">
+                @for (color of primaryColors; track color) {
+                  <div
+                    class="w-5 h-5 rounded-full cursor-pointer hover:scale-110 transition-transform"
+                    [class]="color"
+                    [class.ring-2]="color === 'bg-sky-500'"
+                    [class.ring-offset-2]="color === 'bg-sky-500'"
+                  ></div>
+                }
+              </div>
+            </div>
+            <div>
+              <span class="text-sm font-semibold mb-2 block">Surface</span>
+              <div class="flex flex-wrap gap-2">
+                @for (surface of surfaceColors; track surface) {
+                  <div
+                    class="w-5 h-5 rounded-full cursor-pointer hover:scale-110 transition-transform"
+                    [class]="surface"
+                    [class.ring-2]="surface === 'bg-zinc-500'"
+                    [class.ring-offset-2]="surface === 'bg-zinc-500'"
+                  ></div>
+                }
+              </div>
+            </div>
+            <div>
+              <span class="text-sm font-semibold mb-2 block">Presets</span>
+              <div
+                class="flex border rounded-md overflow-hidden border-surface-200 dark:border-surface-700"
+              >
+                <button
+                  class="flex-1 py-1 px-2 bg-transparent hover:bg-surface-hover text-sm border-r border-surface-200 dark:border-surface-700 cursor-pointer"
+                >
+                  Aura
+                </button>
+                <button
+                  class="flex-1 py-1 px-2 bg-transparent hover:bg-surface-hover text-sm border-r border-surface-200 dark:border-surface-700 cursor-pointer"
+                >
+                  Lara
+                </button>
+                <button
+                  class="flex-1 py-1 px-2 bg-primary text-primary-contrast font-medium text-sm cursor-pointer"
+                >
+                  Nora
+                </button>
+              </div>
+            </div>
+          </div>
+        </p-popover>
+        <p-button
+          icon="pi pi-palette"
+          [text]="true"
+          [rounded]="true"
+          severity="secondary"
+          (click)="themeMenu.toggle($event)"
+        />
+        <p-menu #menu [model]="items" [popup]="true" />
+        <p-avatar
+          (click)="menu.toggle($event)"
+          image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+          shape="circle"
+          styleClass="cursor-pointer avatar-hover"
+        />
+      </div>
+    </ng-template>
+  </p-menubar>
+</div>
