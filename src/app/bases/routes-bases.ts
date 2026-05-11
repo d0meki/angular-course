@@ -10,6 +10,15 @@ export const routesBases: Routes = [
     loadComponent: () => import('./hero/hero').then((m) => m.Hero),
   },
   {
+    path: 'dbzv1',
+    loadComponent: () => import('./dragonball/dragonball').then((m) => m.Dragonball),
+  },
+  {
+    path: 'dbzv2',
+    loadComponent: () =>
+      import('./dragonball-super-page/dragonball-super-page').then((m) => m.DragonballSuperPage),
+  },
+  {
     path: '',
     redirectTo: 'counter',
     pathMatch: 'full',

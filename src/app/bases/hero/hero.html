@@ -1,0 +1,41 @@
+<div class="mb-4 p-8">
+  <p-card header="Hero">
+    <h1>{{ name() }}</h1>
+
+    <dl class="mb-4">
+      <td>Nombre:</td>
+      <dd>{{ name() }}</dd>
+
+      <td>Edad:</td>
+      <dd>{{ age() }}</dd>
+
+      <td>Método:</td>
+      <dd>{{ heroDescription() }}</dd>
+
+      <td>Capitalizado:</td>
+      <!-- <dd>{{ capitalizedName() }}</dd> -->
+      <dd>{{ name() | uppercase }}</dd>
+    </dl>
+
+    <p-button
+      type="button"
+      label="Cambiar nombre"
+      (click)="changeHero()"
+      class="btn btn-primary mx-2"
+    ></p-button>
+
+    <p-button
+      type="button"
+      label="Cambiar edad"
+      (click)="changeAge()"
+      class="btn btn-primary"
+    ></p-button>
+
+    <p-button
+      type="button"
+      label="Reset"
+      (click)="resetForm()"
+      class="btn btn-primary mx-2"
+    ></p-button>
+  </p-card>
+</div>

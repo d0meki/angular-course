@@ -1,0 +1,19 @@
+<div class="mb-4 p-8">
+  <p-card header="Counter">
+    <div class="p-5 flex flex-col gap-2">
+      <div class="grid grid-cols-4">
+        <div class="col-span-4">
+          <h1>Counter: {{ counter }}</h1>
+          <h1>Counter Signal: {{ counterSignal() }}</h1>
+          <hr />
+        </div>
+
+        <div class="col-start-1 col-end-5 flex">
+          <p-button (click)="increaseBy(1)">+1</p-button>
+          <p-button (click)="increaseBy(-1)">-1</p-button>
+          <p-button (click)="resetCounter()">Reset</p-button>
+        </div>
+      </div>
+    </div>
+  </p-card>
+</div>

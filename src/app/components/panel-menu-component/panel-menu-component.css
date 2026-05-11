@@ -1,3 +1,11 @@
 :host {
   display: block;
 }
+
+a.active span {
+  color: #10b981;
+}
+
+a.active i {
+  color: #10b981;
+}

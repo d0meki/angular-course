@@ -7,7 +7,9 @@ import { RouterOutlet } from '@angular/router';
   imports: [MenubarComponent, RouterOutlet],
   template: `
     <app-menubar />
-    <router-outlet />
+    <div class="flex justify-center">
+      <router-outlet />
+    </div>
   `,
   styleUrl: './dashboard.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -31,6 +31,16 @@ export class PanelMenuComponent {
             icon: 'pi pi-star',
             routerLink: '/dashboard/bases/hero',
           },
+          {
+            label: 'Dragon Ball V1',
+            icon: 'pi pi-user',
+            routerLink: '/dashboard/bases/dbzv1',
+          },
+          {
+            label: 'Dragon Ball V2',
+            icon: 'pi pi-user',
+            routerLink: '/dashboard/bases/dbzv2',
+          },
         ],
       },
     ];

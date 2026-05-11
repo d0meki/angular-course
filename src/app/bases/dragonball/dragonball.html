@@ -1,0 +1,55 @@
+<div class="mb-4 p-8">
+  <p-card [style]="{ width: '50rem', overflow: 'hidden' }" header="DragonBall">
+    <section class="grid grid-cols-2">
+      <div class="mr-2">
+        <h3 class="mb-2">Agregar: {{ name() }}</h3>
+        <hr />
+        <p-floatlabel class="mt-7">
+          <input
+            pInputText
+            #txtName
+            [value]="name()"
+            (change)="name.set(txtName.value)"
+            (input)="name.set(txtName.value)"
+            autocomplete="off"
+          />
+          <label for="over_label">Nombre</label>
+        </p-floatlabel>
+
+        <p-floatlabel class="mt-7 mb-4">
+          <p-inputNumber
+            inputId="power_label"
+            [ngModel]="power()"
+            (ngModelChange)="power.set($event)"
+            autocomplete="off"
+          />
+          <label for="power_label">Poder</label>
+        </p-floatlabel>
+
+        <p-button label="Agregar" (click)="addCharacter()" />
+      </div>
+
+      <div class="ml-2">
+        <h3>Listado fuertes</h3>
+        <ul>
+          @for (character of characters(); track character.id; let idx = $index) {
+            @if (character.power > 500) {
+              <li>
+                <span>{{ idx + 1 }} - {{ character.name }}</span>
+                <strong
+                  [class.text-red-500]="character.power > 9000"
+                  [class.text-blue-500]="character.power < 9000"
+                >
+                  <!-- [ngClass]="powerClasses()" -->
+                  ({{ character.power }})</strong
+                >
+              </li>
+            } @else {
+              <li><strong>Aquí no hay nadie</strong></li>
+            }
+          }
+        </ul>
+      </div>
+    </section>
+  </p-card>
+</div>
