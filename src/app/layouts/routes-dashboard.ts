@@ -10,6 +10,10 @@ export const routesDashboard: Routes = [
         path: 'bases',
         loadChildren: () => import('../bases/routes-bases').then((m) => m.routesBases),
       },
+      {
+        path: 'gifs',
+        loadChildren: () => import('../gifs/routes-gif').then((m) => m.routesGifs),
+      },
     ],
   },
 ];
