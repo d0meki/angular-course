@@ -14,6 +14,10 @@ export const routesDashboard: Routes = [
         path: 'gifs',
         loadChildren: () => import('../gifs/routes-gif').then((m) => m.routesGifs),
       },
+      {
+        path: 'countries',
+        loadChildren: () => import('../country/routes-country').then((m) => m.routesCountry),
+      },
     ],
   },
 ];

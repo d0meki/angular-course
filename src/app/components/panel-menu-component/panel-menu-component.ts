@@ -68,5 +68,26 @@ export class PanelMenuComponent {
         },
       ],
     },
+    {
+      label: 'Countries',
+      icon: 'pi pi-folder',
+      items: [
+        {
+          label: 'Capital',
+          icon: 'pi pi-flag',
+          routerLink: '/dashboard/countries/capital',
+        },
+        {
+          label: 'Pais',
+          icon: 'pi pi-map',
+          routerLink: '/dashboard/countries/pais',
+        },
+        {
+          label: 'Region',
+          icon: 'pi pi-slack',
+          routerLink: '/dashboard/countries/region',
+        },
+      ],
+    },
   ]);
 }
