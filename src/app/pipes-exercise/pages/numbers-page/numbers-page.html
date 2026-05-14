@@ -1,0 +1,66 @@
+<section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-5">
+  <p-card [style]="{ width: '25rem', height: '9rem', overflow: 'hidden' }">
+    <div class="flex justify-between gap-2">
+      <div class="flex flex-col gap-1">
+        <span class="text-surface-500 dark:text-surface-400 text-lg">Number Pipe '1.2-2'</span>
+        <span class="font-bold text-4xl"> {{ totalSells() | number: '1.2-2' }} </span>
+        <span class="text-surface-500 dark:text-surface-400 text-lg">{{ totalSells() }}</span>
+      </div>
+      <span
+        class="w-8 h-8 rounded-full inline-flex justify-center items-center text-center"
+        [style]="{ 'background-color': '#4169E1', color: '#ffffff' }"
+      >
+        <i class="pi pi-crown"></i>
+      </span>
+    </div>
+  </p-card>
+  <p-card [style]="{ width: '25rem', height: '9rem', overflow: 'hidden' }">
+    <div class="flex justify-between gap-2">
+      <div class="flex flex-col gap-1">
+        <span class="text-surface-500 dark:text-surface-400 text-lg">Number Pipe '1.1-2'</span>
+        <span class="font-bold text-4xl"> {{ totalSells() + 12345678.9 | number: '1.1-2' }} </span>
+        <span class="text-surface-500 dark:text-surface-400 text-lg">{{ totalSells() }}</span>
+      </div>
+      <span
+        class="w-8 h-8 rounded-full inline-flex justify-center items-center text-center"
+        [style]="{ 'background-color': '#4169E1', color: '#ffffff' }"
+      >
+        <i class="pi pi-crown"></i>
+      </span>
+    </div>
+  </p-card>
+  <p-card [style]="{ width: '25rem', height: '9rem', overflow: 'hidden' }">
+    <div class="flex justify-between gap-2">
+      <div class="flex flex-col gap-1">
+        <span class="text-surface-500 dark:text-surface-400 text-lg">Currency Pipe</span>
+        <span class="font-bold text-4xl">
+          {{ totalSells() | currency: 'CAD' : 'symbol-narrow' : '1.4-4' }}
+        </span>
+        <span class="text-surface-500 dark:text-surface-400 text-lg">{{ totalSells() }}</span>
+      </div>
+      <span
+        class="w-8 h-8 rounded-full inline-flex justify-center items-center text-center"
+        [style]="{ 'background-color': '#4169E1', color: '#ffffff' }"
+      >
+        <i class="pi pi-crown"></i>
+      </span>
+    </div>
+  </p-card>
+  <p-card [style]="{ width: '25rem', height: '9rem', overflow: 'hidden' }">
+    <div class="flex justify-between gap-2">
+      <div class="flex flex-col gap-1">
+        <span class="text-surface-500 dark:text-surface-400 text-lg">Percent Pipe</span>
+        <span class="font-bold text-4xl">
+          {{ percent() | percent: '1.2-2' }}
+        </span>
+        <span class="text-surface-500 dark:text-surface-400 text-lg">{{ percent() }}</span>
+      </div>
+      <span
+        class="w-8 h-8 rounded-full inline-flex justify-center items-center text-center"
+        [style]="{ 'background-color': '#4169E1', color: '#ffffff' }"
+      >
+        <i class="pi pi-crown"></i>
+      </span>
+    </div>
+  </p-card>
+</section>

@@ -18,6 +18,10 @@ export const routesDashboard: Routes = [
         path: 'countries',
         loadChildren: () => import('../country/routes-country').then((m) => m.routesCountry),
       },
+      {
+        path: 'pipes',
+        loadChildren: () => import('../pipes-exercise/routes-pipe').then((m) => m.routesPipe),
+      },
     ],
   },
 ];

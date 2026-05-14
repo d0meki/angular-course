@@ -1,0 +1,82 @@
+<section class="mx-5 mt-5">
+  <h1 class="text-2xl font-bold">Pipes Personalizados</h1>
+  <h3 class="text-xl font-thin">Pipes no incluidos en Angular</h3>
+</section>
+<section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-5">
+  <card-pipe title="ToggleCase Pipe">
+    <div class="stat-value">{{ name() | toggleCase: upperCase() }}</div>
+    <div class="stat-desc">{{ name() }}</div>
+    <p-button (click)="upperCase.set(!upperCase())" label="Cambiar cliente" />
+  </card-pipe>
+</section>
+<p-divider />
+<section class="my-2">
+  <h1 class="text-2xl font-bold">Ordenando por: {{ sortBy() }}</h1>
+  <h1 class="text-2xl font-bold">Filtrando por: {{ searchQuery() }}</h1>
+
+  <div class="flex gap-2 justify-end w-full mt-2">
+    <!-- <input
+      type="text"
+      class="input input-bordered w-full max-w-xs"
+      placeholder="Buscar héroe"
+      (input)="searchQuery.set(txtSearch.value)"
+      #txtSearch
+    /> -->
+    <input
+      type="text"
+      pInputText
+      #txtSearch
+      autofocus
+      class="mr-3"
+      placeholder="Buscar Hero"
+      (input)="searchQuery.set(txtSearch.value)"
+    />
+
+    <div class="flex flex-1"></div>
+
+    <p-button (click)="sortBy.set('name')" label="Por nombre" />
+    <p-button (click)="sortBy.set('canFly')" label="Por volar" />
+    <p-button (click)="sortBy.set('color')" label="Por color" />
+    <p-button (click)="sortBy.set('creator')" label="Por creador" />
+  </div>
+</section>
+<p-divider />
+<section class="mt-5">
+  <div class="card">
+    <!-- <p-table [value]="countries()" [tableStyle]="{ 'min-width': '50rem' }"> -->
+    <p-table
+      [value]="heroes() | heroSortBy: sortBy() | heroFilter: searchQuery()"
+      [tableStyle]="{ 'min-width': '50rem' }"
+    >
+      <ng-template #header>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Puede Volar</th>
+          <th>Color</th>
+          <th>Creador</th>
+        </tr>
+      </ng-template>
+      <!-- <ng-template #body let-country> -->
+      <ng-template #body let-hero>
+        <tr>
+          <td>{{ hero.id }}</td>
+          <td>{{ hero.name | toggleCase: upperCase() }}</td>
+          <td>
+            <span [class]="hero.canFly ? 'text-green-500' : 'text-red-500'">
+              {{ hero.canFly | canFly }}
+            </span>
+          </td>
+          <td>
+            <p-badge
+              [style.background-color]="hero.color | heroTextColor"
+              [value]="hero.color | heroColor | titlecase"
+            ></p-badge>
+          </td>
+          <td>{{ hero.creator | heroCreator }}</td>
+        </tr>
+      </ng-template>
+      <ng-template #footer> </ng-template>
+    </p-table>
+  </div>
+</section>

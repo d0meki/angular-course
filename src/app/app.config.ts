@@ -1,11 +1,22 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { ApplicationConfig, LOCALE_ID, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
+
+import { PipeService } from './pipes-exercise/services/pipe.service';
+
+import localEs from '@angular/common/locales/es';
+import localFr from '@angular/common/locales/fr';
+import localEn from '@angular/common/locales/en';
+
+registerLocaleData(localEs);
+registerLocaleData(localFr);
+registerLocaleData(localEn);
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withFetch()),
@@ -18,5 +29,12 @@ export const appConfig: ApplicationConfig = {
         preset: Aura,
       },
     }),
+    // LOCALE_ID para que PrimeNG use español en fechas y números
+    {
+      provide: LOCALE_ID,
+      // useValue: 'es',
+      deps: [PipeService],
+      useFactory: (pipeService: PipeService) => pipeService.getLocale,
+    },
   ],
 };

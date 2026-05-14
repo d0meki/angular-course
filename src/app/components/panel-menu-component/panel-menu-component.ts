@@ -89,5 +89,31 @@ export class PanelMenuComponent {
         },
       ],
     },
+    {
+      label: 'Pipes',
+      icon: 'pi pi-folder',
+      items: [
+        {
+          label: 'Basic',
+          icon: 'pi pi-palette',
+          routerLink: '/dashboard/pipes/basic',
+        },
+        {
+          label: 'Numbers',
+          icon: 'pi pi-calculator',
+          routerLink: '/dashboard/pipes/numbers',
+        },
+        {
+          label: 'Uncommon',
+          icon: 'pi pi-globe',
+          routerLink: '/dashboard/pipes/uncommon',
+        },
+        {
+          label: 'Custom',
+          icon: 'pi pi-filter',
+          routerLink: '/dashboard/pipes/custom',
+        },
+      ],
+    },
   ]);
 }
