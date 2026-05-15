@@ -147,5 +147,26 @@ export class PanelMenuComponent {
         },
       ],
     },
+    {
+      label: 'Lifecycle',
+      icon: 'pi pi-folder',
+      items: [
+        {
+          label: 'Home',
+          icon: 'pi pi-palette',
+          routerLink: '/dashboard/lifecycle/home',
+        },
+        {
+          label: 'About',
+          icon: 'pi pi-map',
+          routerLink: '/dashboard/lifecycle/about',
+        },
+        {
+          label: 'Contact',
+          icon: 'pi pi-sitemap',
+          routerLink: '/dashboard/lifecycle/contact',
+        },
+      ],
+    },
   ]);
 }

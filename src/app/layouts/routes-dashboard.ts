@@ -27,6 +27,10 @@ export const routesDashboard: Routes = [
         loadChildren: () =>
           import('../reactive-form/routes-reactive').then((m) => m.routesReactive),
       },
+      {
+        path: 'lifecycle',
+        loadChildren: () => import('../lifecycle/routes-life').then((m) => m.routesLifeCylce),
+      },
     ],
   },
 ];
