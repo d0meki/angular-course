@@ -22,6 +22,11 @@ export const routesDashboard: Routes = [
         path: 'pipes',
         loadChildren: () => import('../pipes-exercise/routes-pipe').then((m) => m.routesPipe),
       },
+      {
+        path: 'reactive',
+        loadChildren: () =>
+          import('../reactive-form/routes-reactive').then((m) => m.routesReactive),
+      },
     ],
   },
 ];

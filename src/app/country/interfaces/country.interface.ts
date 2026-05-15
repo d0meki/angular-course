@@ -8,4 +8,6 @@ export interface Country {
 
   region: string;
   subRegion: string;
+  cca3: string;
+  borders: string[];
 }

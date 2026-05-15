@@ -1,0 +1,109 @@
+<section class="mx-5 mt-5">
+  <h1 class="text-2xl font-bold">Reactivos Dinamicos</h1>
+  <h3 class="text-xl font-thin">Templates driven forms</h3>
+</section>
+<p-divider />
+
+<section class="grid grid-cols-1">
+  <p-card header="Formulario">
+    <form autocomplete="off" [formGroup]="myForm">
+      <!-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5"> -->
+      <!-- una sola columna -->
+      <div class="grid grid-cols-1 gap-4 mt-5">
+        <!-- Campo de producto -->
+        <div>
+          <p-inputgroup class="w-full md:!w-[50rem]">
+            <p-inputgroup-addon>
+              <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <p-floatlabel>
+              <input pInputText formControlName="name" />
+              <label for="name">Nombre</label>
+            </p-floatlabel>
+          </p-inputgroup>
+          @if (formUtils.isValidField(myForm, 'name')) {
+            <p-message class="mt-2" severity="error">
+              {{ formUtils.getFieldError(myForm, 'name') }}
+            </p-message>
+          }
+        </div>
+
+        <!-- Campo de producto -->
+        <div class="mt-4">
+          <p-inputgroup>
+            <p-floatlabel class="w-full">
+              <input
+                pInputText
+                [formControl]="newFavorite"
+                (keydown.enter)="onAddToFavorites()"
+                (keydown.enter)="$event.preventDefault()"
+                class="w-full"
+              />
+              <label for="name">Agregar Favorito</label>
+            </p-floatlabel>
+
+            <p-inputgroup-addon class="flex-shrink-0 p-0">
+              <p-button
+                icon="pi pi-plus"
+                label="Agregar Favorito"
+                variant="outlined"
+                severity="info"
+                styleClass="whitespace-nowrap min-w-max"
+                (click)="onAddToFavorites()"
+              />
+            </p-inputgroup-addon>
+          </p-inputgroup>
+        </div>
+
+        <!-- Campo de existencias -->
+        <div formArrayName="favoriteGames">
+          @for (favoriteGame of favoriteGames.controls; track $index; let i = $index) {
+            <p-inputgroup class="mt-6">
+              <p-floatlabel class="w-full">
+                <input pInputText [formControlName]="i" class="w-full" />
+                <label for="name">Favoritos</label>
+              </p-floatlabel>
+
+              <p-inputgroup-addon class="flex-shrink-0 p-0">
+                <p-button
+                  icon="pi pi-trash"
+                  label="Eliminar"
+                  variant="outlined"
+                  severity="danger"
+                  styleClass="whitespace-nowrap min-w-max"
+                  (click)="onDeleteFavorite(i)"
+                />
+              </p-inputgroup-addon>
+            </p-inputgroup>
+            @if (formUtils.isValidFieldInArray(favoriteGames, i)) {
+              <p-message class="mt-2" severity="error">
+                {{ formUtils.getFieldErrorInArray(favoriteGames, i) }}
+              </p-message>
+            }
+          }
+          @if (formUtils.isValidField(myForm, 'favoriteGames')) {
+            <p-message class="mt-2" severity="error"> Debe Tener al menos 2 juegos </p-message>
+          }
+        </div>
+      </div>
+      <div class="mt-3">
+        <p-button class="float-end" type="submit" label="Guardar" />
+        <!-- [disabled]="myForm.invalid"  -->
+      </div>
+    </form>
+  </p-card>
+</section>
+<p-divider />
+<section class="grid grid-cols-1 mt-5">
+  <p-card header="Informacion del Formulario">
+    <span class="font-bold">Valid</span>
+    <pre>{{ myForm.valid | json }}</pre>
+
+    <span class="font-bold">Value</span>
+    <pre>{{ myForm.value | json }}</pre>
+
+    <span class="font-bold">Errores Agregar Juego</span>
+    <pre>{{ myForm.controls['favoriteGames'].errors | json }}</pre>
+    <pre>{{ myForm.controls['favoriteGames'].value | json }}</pre>
+  </p-card>
+</section>

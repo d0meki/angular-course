@@ -115,5 +115,37 @@ export class PanelMenuComponent {
         },
       ],
     },
+    {
+      label: 'Reactive',
+      icon: 'pi pi-folder',
+      items: [
+        {
+          label: 'Basic',
+          icon: 'pi pi-palette',
+          routerLink: '/dashboard/reactive/basic',
+        },
+        {
+          label: 'Dynamic',
+          icon: 'pi pi-sitemap',
+          routerLink: '/dashboard/reactive/dynamic',
+        },
+        {
+          label: 'Switches',
+          icon: 'pi pi-power-off',
+          routerLink: '/dashboard/reactive/switches',
+        },
+        {
+          label: 'Country',
+          icon: 'pi pi-map',
+          routerLink: '/dashboard/reactive/country',
+        },
+
+        {
+          label: 'Register',
+          icon: 'pi pi-user',
+          routerLink: '/dashboard/reactive/register',
+        },
+      ],
+    },
   ]);
 }

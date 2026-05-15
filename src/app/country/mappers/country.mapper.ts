@@ -14,6 +14,8 @@ export class CountryMapper {
 
       region: restCountry.region,
       subRegion: restCountry.subregion,
+      cca3: restCountry.cca3,
+      borders: restCountry.borders ?? [],
     };
   }
 
