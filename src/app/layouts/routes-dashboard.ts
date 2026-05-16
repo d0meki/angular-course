@@ -31,6 +31,10 @@ export const routesDashboard: Routes = [
         path: 'lifecycle',
         loadChildren: () => import('../lifecycle/routes-life').then((m) => m.routesLifeCylce),
       },
+      {
+        path: 'maps',
+        loadChildren: () => import('../maps/routes-map').then((m) => m.routesMaps),
+      },
     ],
   },
 ];

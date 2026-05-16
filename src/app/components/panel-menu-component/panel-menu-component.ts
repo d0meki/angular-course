@@ -168,5 +168,26 @@ export class PanelMenuComponent {
         },
       ],
     },
+    {
+      label: 'Maps',
+      icon: 'pi pi-folder',
+      items: [
+        {
+          label: 'Fullscreen Map',
+          icon: 'pi pi-palette',
+          routerLink: '/dashboard/maps/fullscreen-map',
+        },
+        {
+          label: 'Markers',
+          icon: 'pi pi-map',
+          routerLink: '/dashboard/maps/markers',
+        },
+        {
+          label: 'Houses',
+          icon: 'pi pi-sitemap',
+          routerLink: '/dashboard/maps/houses',
+        },
+      ],
+    },
   ]);
 }
