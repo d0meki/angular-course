@@ -11,9 +11,10 @@ const mapboxKey = process.env['MAPBOX_KEY'];
 const giphyApiKey = process.env['GIPHY_API_KEY'];
 const apiCountriesUrl = process.env['COUNTRY_API_URL'];
 const giphyUrl = process.env['GIPHY_API_URL'];
+const tesloApiUrl = process.env['TESLO_API_URL'];
 
-if (!mapboxKey || !giphyApiKey || !apiCountriesUrl || !giphyUrl) {
-    throw new Error('MAPS_API_KEY or GIPHY_API_KEY or COUNTRY_API_URL or GIPHY_API_URL is not defined');
+if (!mapboxKey || !giphyApiKey || !apiCountriesUrl || !giphyUrl || !tesloApiUrl) {
+    throw new Error('MAPS_API_KEY or GIPHY_API_KEY or COUNTRY_API_URL or GIPHY_API_URL or TESLO_API_URL is not defined');
 }
 
 
@@ -24,6 +25,7 @@ const envFileContent = `export const environment = {
     // Apis Urls
     apiCoutriesUrl: "${apiCountriesUrl}",
     giphyUrl: "${giphyUrl}",
+    tesloApiUrl: "${tesloApiUrl}",
 };`;
 
 mkdirSync('./src/environments', { recursive: true });

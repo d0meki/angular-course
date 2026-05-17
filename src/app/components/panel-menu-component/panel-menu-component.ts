@@ -189,5 +189,16 @@ export class PanelMenuComponent {
         },
       ],
     },
+    {
+      label: 'Store',
+      icon: 'pi pi-folder',
+      items: [
+        {
+          label: 'Home',
+          icon: 'pi pi-palette',
+          routerLink: '/dashboard/store/home',
+        },
+      ],
+    },
   ]);
 }

@@ -35,6 +35,10 @@ export const routesDashboard: Routes = [
         path: 'maps',
         loadChildren: () => import('../maps/routes-map').then((m) => m.routesMaps),
       },
+      {
+        path: 'store',
+        loadChildren: () => import('../store/routes-store').then((m) => m.routesStore),
+      },
     ],
   },
 ];
