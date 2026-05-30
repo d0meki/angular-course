@@ -198,6 +198,11 @@ export class PanelMenuComponent {
           icon: 'pi pi-palette',
           routerLink: '/dashboard/store/home',
         },
+        {
+          label: 'productos',
+          icon: 'pi pi-shopping-cart',
+          routerLink: '/dashboard/store/products-list',
+        },
       ],
     },
   ]);

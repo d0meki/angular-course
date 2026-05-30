@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
 
 import { PipeService } from './pipes-exercise/services/pipe.service';
@@ -12,6 +12,8 @@ import { PipeService } from './pipes-exercise/services/pipe.service';
 import localEs from '@angular/common/locales/es';
 import localFr from '@angular/common/locales/fr';
 import localEn from '@angular/common/locales/en';
+import { authInterceptor } from './auth/interceptor/auth.interceptor';
+import { loggingInterceptor } from './auth/interceptor/loggin.interceptor';
 
 registerLocaleData(localEs);
 registerLocaleData(localFr);
@@ -19,7 +21,7 @@ registerLocaleData(localEn);
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withFetch()),
+    provideHttpClient(withFetch(), withInterceptors([loggingInterceptor, authInterceptor])),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     // HashStrategy

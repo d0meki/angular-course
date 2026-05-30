@@ -1,0 +1,39 @@
+<form class="flex flex-col gap-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <p-fluid>
+    <div class="flex flex-col gap-4">
+      <p-iconfield>
+        <p-inputicon styleClass="pi pi-envelope" />
+        <input pInputText type="text" placeholder="Correo electrónico" formControlName="email" />
+      </p-iconfield>
+
+      <p-iconfield>
+        <p-inputicon styleClass="pi pi-lock" />
+        <p-password
+          placeholder="Contraseña"
+          formControlName="password"
+          [toggleMask]="true"
+          [feedback]="false"
+        />
+      </p-iconfield>
+
+      <p-button type="submit" label="Login" severity="primary" styleClass="w-full mt-2" />
+    </div>
+  </p-fluid>
+
+  <p class="text-slate-700 text-center mt-2">
+    ¿No tienes cuenta?
+    <a routerLink="/auth/register" class="text-secondary font-bold hover:underline"
+      >Crea una aquí</a
+    >
+  </p>
+</form>
+
+@if (hasError()) {
+  <div class="fixed bottom-5 right-5 w-72 animate-fadeIn z-50">
+    <p-message
+      severity="error"
+      text="Por favor revise la información ingresada."
+      styleClass="w-full"
+    />
+  </div>
+}

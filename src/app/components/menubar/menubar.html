@@ -2,7 +2,13 @@
   <app-sidebar [(visible)]="visible" />
   <p-menubar>
     <ng-template #start>
-      <p-button icon="pi pi-bars" [text]="true" [rounded]="true" severity="secondary" (click)="toggleDrawer()" />
+      <p-button
+        icon="pi pi-bars"
+        [text]="true"
+        [rounded]="true"
+        severity="secondary"
+        (click)="toggleDrawer()"
+      />
     </ng-template>
     <ng-template #end>
       <div class="flex items-center gap-2">
@@ -72,13 +78,22 @@
           severity="secondary"
           (click)="themeMenu.toggle($event)"
         />
-        <p-menu #menu [model]="items" [popup]="true" />
-        <p-avatar
-          (click)="menu.toggle($event)"
-          image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-          shape="circle"
-          styleClass="cursor-pointer avatar-hover"
-        />
+        <!-- Menu -->
+        @if (authService.authStatus() === 'authenticated') {
+          <!-- nombre del usuario -->
+          <p class="text-sm">{{ authService.user()?.fullName | titlecase }}</p>
+          <p-menu #menu [model]="items" [popup]="true" />
+          <p-avatar
+            (click)="menu.toggle($event)"
+            image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+            shape="circle"
+            class="cursor-pointer avatar-hover"
+          />
+        } @else {
+          <p-message severity="error">
+            <pre>{{ authService.authStatus() }}</pre>
+          </p-message>
+        }
       </div>
     </ng-template>
   </p-menubar>

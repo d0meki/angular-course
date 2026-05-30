@@ -14,13 +14,13 @@ import { JsonPipe } from '@angular/common';
       [circular]="false"
       [responsiveOptions]="responsiveOptions()"
     >
-      <ng-template let-product #item>
+      <ng-template let-image #item>
         <div class="border border-surface rounded-border m-2 p-4">
           <div class="mb-4">
             <div class="relative mx-auto">
               <img
-                src="{{ images() | productImage }}"
-                [alt]="product.name"
+                src="{{ image | productImage }}"
+                [alt]="image.name"
                 class="w-full rounded-border"
               />
             </div>

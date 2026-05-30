@@ -1,0 +1,161 @@
+<h1 class="text-2xl font-bold">{{ product().title }}</h1>
+<p-divider />
+<p-card>
+  <form
+    [formGroup]="productForm"
+    class="grid grid-cols-1 sm:grid-cols-2 gap-4"
+    (ngSubmit)="onSubmit()"
+  >
+    <p-card>
+      <!-- Datos generales -->
+      <div class="flex flex-col gap-2">
+        <h2 class="text-2xl font-bold h-12">Datos generales</h2>
+        <input pInputText placeholder="Título" styleClass="w-full" formControlName="title" />
+        <form-error-message [control]="productForm.get('title')!" />
+
+        <input pInputText placeholder="Slug" styleClass="w-full" formControlName="slug" />
+        <form-error-message [control]="productForm.get('slug')!" />
+
+        <textarea
+          pInputText
+          placeholder="Descripción"
+          rows="6"
+          styleClass="w-full"
+          formControlName="description"
+        ></textarea>
+        <form-error-message [control]="productForm.get('description')!" />
+
+        <h2 class="text-lg font-bold">Datos de venta</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <div>
+            <p-inputnumber placeholder="Precio" class="w-full" formControlName="price" [min]="0" />
+            <form-error-message [control]="productForm.get('price')!" />
+          </div>
+
+          <div>
+            <p-inputnumber
+              placeholder="Inventario"
+              class="w-full"
+              formControlName="stock"
+              [min]="0"
+            />
+            <form-error-message [control]="productForm.get('stock')!" />
+          </div>
+        </div>
+
+        <!-- tags -->
+        <input pInputText placeholder="Tags" styleClass="w-full" formControlName="tags" />
+        <form-error-message [control]="productForm.get('tags')!" />
+
+        <!-- Botones para el género -->
+        <div class="grid grid-cols-4 gap-2">
+          <p-button
+            styleClass="w-full"
+            type="button"
+            label="Masculino"
+            size="small"
+            [severity]="productForm.value.gender === 'men' ? 'primary' : 'primary'"
+            [outlined]="productForm.value.gender !== 'men'"
+            (click)="productForm.patchValue({ gender: 'men' })"
+          />
+          <p-button
+            styleClass="w-full"
+            type="button"
+            label="Femenino"
+            size="small"
+            [severity]="productForm.value.gender === 'women' ? 'primary' : 'primary'"
+            [outlined]="productForm.value.gender !== 'women'"
+            (click)="productForm.patchValue({ gender: 'women' })"
+          />
+          <p-button
+            styleClass="w-full"
+            type="button"
+            label="Kid"
+            size="small"
+            [severity]="productForm.value.gender === 'kid' ? 'warn' : 'primary'"
+            [outlined]="productForm.value.gender !== 'kid'"
+            (click)="productForm.patchValue({ gender: 'kid' })"
+          />
+          <p-button
+            styleClass="w-full"
+            type="button"
+            label="Unisex"
+            size="small"
+            [severity]="productForm.value.gender === 'unisex' ? 'primary' : 'primary'"
+            [outlined]="productForm.value.gender !== 'unisex'"
+            (click)="productForm.patchValue({ gender: 'unisex' })"
+          />
+        </div>
+
+        <!-- Sizes -->
+        <div class="grid grid-cols-6 gap-2">
+          @for (size of sizes; track size) {
+            <p-button
+              styleClass="w-full"
+              type="button"
+              [label]="size"
+              size="small"
+              [severity]="productForm.value.sizes?.includes(size) ? 'primary' : 'primary'"
+              [outlined]="!productForm.value.sizes?.includes(size)"
+              (click)="onSizeClicked(size)"
+            />
+          }
+        </div>
+      </div>
+    </p-card>
+    <p-card>
+      <!-- Imágenes -->
+      <div class="flex flex-col gap-2">
+        <div class="flex justify-end h-12">
+          <p-button type="submit" label="Guardar" severity="primary" />
+        </div>
+
+        <product-carousel [images]="product().images" />
+
+        <!-- <input type="file" class="file-input file-input-bordered w-full mt-4" /> -->
+        <div class="card flex flex-wrap gap-6 items-center justify-between">
+          <!-- (onUpload)="onUpload($event)" -->
+          <!-- <p-fileupload
+            #fu
+            mode="basic"
+            chooseLabel="Choose"
+            chooseIcon="pi pi-upload"
+            name="demo[]"
+            url="https://www.primefaces.org/cdn/api/upload.php"
+            accept="image/*"
+            maxFileSize="1000000"
+            multiple
+            (change)="onFilesChanged($event)"
+          />
+          <p-button label="Upload" (onClick)="fu.upload()" severity="secondary" /> -->
+          <p-fileupload
+            name="demo[]"
+            url="https://www.primefaces.org/cdn/api/upload.php"
+            (onSelect)="onFilesChanged($event)"
+            [multiple]="true"
+            accept="image/*"
+            maxFileSize="1000000"
+            mode="advanced"
+            [showUploadButton]="false"
+          >
+            <ng-template #empty>
+              <div>Drag and drop files to here to upload.</div>
+            </ng-template>
+          </p-fileupload>
+        </div>
+        <!-- <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
+          @for (image of tempImages(); track image) {
+            <img [src]="image" alt="Temporal image" class="w-full object-cover rounded-xl" />
+          }
+        </div> -->
+      </div>
+    </p-card>
+  </form>
+</p-card>
+
+@if (wasSaved()) {
+  <p-message severity="success" class="fixed bottom-4 right-4 w-80 animate-fadeIn">
+    Datos actualizados correctamente
+  </p-message>
+}

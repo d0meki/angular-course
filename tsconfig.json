@@ -3,13 +3,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./src",
     "paths": {
-      "@app/*": ["app/*"],
-      "@layouts/*": ["layouts/*"],
-      "@bases/*": ["bases/*"],
-      "@gifs/*": ["gifs/*"],
-      "@environments/*": ["environments/*"],
+      "@app/*": ["./src/app/*"],
+      "@layouts/*": ["./src/app/layouts/*"],
+      "@bases/*": ["./src/app/bases/*"],
+      "@gifs/*": ["./src/app/gifs/*"],
+      "@environments/*": ["./src/environments/*"]
     },
     "strict": true,
     "noImplicitOverride": true,

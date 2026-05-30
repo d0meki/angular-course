@@ -14,6 +14,18 @@ export const routesStore: Routes = [
     loadComponent: () => import('./pages/product-page/product-page'),
   },
   {
+    path: 'products-list',
+    loadComponent: () => import('./pages/productos-page/productos-page'),
+  },
+  {
+    path: 'products-list',
+    loadComponent: () => import('./pages/productos-page/productos-page'),
+  },
+  {
+    path: 'producto/:id',
+    loadComponent: () => import('./pages/producto-page/producto-page'),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

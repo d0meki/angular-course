@@ -27,6 +27,7 @@ export class CountryService {
     return this.http.get<RESTCountry[]>(`${API_URL}/capital/${query}`).pipe(
       map((resp) => CountryMapper.mapRestCountryArrayToCountryArray(resp)),
       tap((countries) => this.queryCacheCapital.set(query, countries)),
+      tap((countries) => console.log('countries by capital', countries)),
       catchError((error) => {
         console.log('Error fetching ', error);
 
@@ -46,7 +47,6 @@ export class CountryService {
     return this.http.get<RESTCountry[]>(url).pipe(
       map((resp) => CountryMapper.mapRestCountryArrayToCountryArray(resp)),
       tap((countries) => this.queryCacheCountry.set(query, countries)),
-      delay(2000),
       catchError((error) => {
         console.log('Error fetching ', error);
 
