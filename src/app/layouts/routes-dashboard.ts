@@ -39,6 +39,11 @@ export const routesDashboard: Routes = [
         path: 'store',
         loadChildren: () => import('../store/routes-store').then((m) => m.routesStore),
       },
+      {
+        path: 'angular-moderno',
+        loadChildren: () =>
+          import('../angular-moderno/angular-moderno.routes').then((m) => m.routesAngularModerno),
+      },
     ],
   },
 ];

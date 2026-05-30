@@ -205,5 +205,52 @@ export class PanelMenuComponent {
         },
       ],
     },
+    {
+      label: 'Angular Moderno',
+      icon: 'pi pi-folder',
+      items: [
+        {
+          label: 'Change Detection',
+          icon: 'pi pi-palette',
+          routerLink: '/dashboard/angular-moderno/change-detection',
+        },
+        {
+          label: 'Control Flow',
+          icon: 'pi pi-map',
+          routerLink: '/dashboard/angular-moderno/control-flow',
+        },
+        {
+          label: 'Defer Options',
+          icon: 'pi pi-sitemap',
+          routerLink: '/dashboard/angular-moderno/defer-options',
+        },
+        {
+          label: 'Defer Views',
+          icon: 'pi pi-power-off',
+          routerLink: '/dashboard/angular-moderno/defer-views',
+        },
+
+        {
+          label: 'View Transition 1',
+          icon: 'pi pi-user',
+          routerLink: '/dashboard/angular-moderno/view-transition1',
+        },
+        {
+          label: 'View Transition 2',
+          icon: 'pi pi-user',
+          routerLink: '/dashboard/angular-moderno/view-transition2',
+        },
+        {
+          label: 'Users',
+          icon: 'pi pi-users',
+          routerLink: '/dashboard/angular-moderno/users',
+        },
+        {
+          label: 'User',
+          icon: 'pi pi-user',
+          routerLink: '/dashboard/angular-moderno/user',
+        },
+      ],
+    },
   ]);
 }

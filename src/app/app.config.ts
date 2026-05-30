@@ -1,5 +1,5 @@
 import { ApplicationConfig, LOCALE_ID, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withViewTransitions } from '@angular/router';
 
 import { routes } from './app.routes';
 import { providePrimeNG } from 'primeng/config';
@@ -23,7 +23,15 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withFetch(), withInterceptors([loggingInterceptor, authInterceptor])),
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
+    provideRouter(
+      routes,
+      withViewTransitions({
+        skipInitialTransition: true,
+        // onViewTransitionCreated( transitionInfo ) {
+        //   console.log({transitionInfo});
+        // },
+      }),
+    ),
     // HashStrategy
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     providePrimeNG({
